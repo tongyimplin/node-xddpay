@@ -25,7 +25,10 @@ class XddPayUtil {
     }
 
     objectToString(obj) {
-        var quest = obj ? Object.keys(obj).sort().filter(key => key!=='sign').map(function (key) {
+        var quest = obj ? Object.keys(obj)
+            .sort()
+            .filter(key => key!=='sign')
+            .map(function (key) {
             var val = obj[key];
             if (Array.isArray(val)) {
                 var temp = (key)+ '=[';

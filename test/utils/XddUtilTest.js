@@ -9,7 +9,7 @@ const uuid = require('node-uuid');
 const DEFAULT_CONFIG = {
     merchantNo: 359012,
     out_storeNo: 888,
-    signKey: 'V1rSdGxEcqXnFsPQqnuVew=='
+    signKey: 'AV1rSdGxEcqXnFsPQqnuVew=='
 };
 
 let orderNo = "d306b130acc711e7bf9fada355409249" || uuid.v1().replace(/-/ig, '');

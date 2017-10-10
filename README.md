@@ -1,3 +1,5 @@
+## [fork me on github](https://github.com/tongyimplin/node-xddpay.git)
+
 ### 获取H5支付跳转地址
 
 ```

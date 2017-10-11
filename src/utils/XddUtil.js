@@ -24,10 +24,10 @@ class XddPayUtil {
     constructor() {
     }
 
-    objectToString(obj) {
+    objectToString(obj, filterStr) {
         var quest = obj ? Object.keys(obj)
             .sort()
-            .filter(key => key!=='sign')
+            .filter(key => key!==filterStr)
             .map(function (key) {
             var val = obj[key];
             if (Array.isArray(val)) {
@@ -43,7 +43,7 @@ class XddPayUtil {
     }
 
     createSign(params, signKey) {
-        let strParams = `${this.objectToString(params)}&key=${signKey}`;
+        let strParams = `${this.objectToString(params, 'sign')}&key=${signKey}`;
         // console.log(strParams);
         let sign = MD5.hex_md5_unicode(new Buffer(strParams,'utf8'));
         return sign.toUpperCase();
@@ -63,7 +63,7 @@ class XddPayUtil {
         params.notifyUrl = encodeStr(notifyUrl);
         //签名
         let sign = this.createSign(params, signKey);
-        // console.log(sign);
+        console.log(sign);
         params.sign = sign;
         let encMerchantName = encodeStr(merchantName);
         params.merchantName = encMerchantName;

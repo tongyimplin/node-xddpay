@@ -71,3 +71,17 @@ console.log(paramMap.sign)
 
 
 ```
+
+### [新增]与java端一直的对称加密算法
+
+```
+const DESPlus = require('../../src/utils/DESPlus');
+
+let desUtil = DESPlus.setDefaultKey("kmpassjm2013");
+console.log(desUtil)
+
+let encstr = desUtil.enctype('123456');
+console.log(`encstr: ${encstr}`);
+let decstr = desUtil.dectype(encstr);
+console.log(`decstr: ${decstr}`)
+```

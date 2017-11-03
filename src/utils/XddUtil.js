@@ -58,7 +58,7 @@ class XddPayUtil {
             throw new XddPayError(`payType: [${payType} is not in ${JSON.stringify(PayTypeList)}]`);
         }
         let params = {orderNo, payType, merchantName, total_amount, undiscount_amount, merchantNo, out_storeNo};
-        params.orderInfo = merchantName;
+        params.orderInfo = orderInfo || merchantName;
         params.redirectUrl = encodeStr(redirectUrl);
         params.notifyUrl = encodeStr(notifyUrl);
         //签名

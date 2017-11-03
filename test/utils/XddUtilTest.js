@@ -1,33 +1,40 @@
 // const xddPayUtil = require('../../src/utils/XddUtil');
 const xddPayUtil = require('../../index');
+const fs = require('fs');
 
 const uuid = require('node-uuid');
 
 /**
  * 默认配置
  */
-// const DEFAULT_CONFIG = {
-//     merchantNo: 359012,
-//     out_storeNo: 888,
-//     signKey: 'AV1rSdGxEcqXnFsPQqnuVew=='
-// };
 const DEFAULT_CONFIG = {
-    merchantNo: 865001,
-    out_storeNo: 8650010001,
-    signKey: 'FURFCzRZNnk7H5C9fBR2Rg=='
+    merchantNo: 359004,
+    out_storeNo: 888888,
+    signKey: 'V1rSdGxEcqXnFsPQqnuVew=='
 };
+//http://open.xiangqianpos.com/appWeb/payWeb?orderNo=1507709844352&payType=H5_WXJSAPI&
+// redirectUrl=http%3A%2F%2Fkmbk.xiaozhuzhu.top%2Fagent%2F%23%2FnotifyBuy&
+// total_amount=1&orderInfo=AgentPlatform&sign=5FA9425A02539B12B717E12E15A3E031&
+// notifyUrl=http%3A%2F%2Fkmbk.xiaozhuzhu.top%2Fyunpos%2Fagent%2Fpay%2FxddPayRedirectUrl.form&
+// undiscount_amount=0&out_storeNo=888&merchantName=F&merchantNo=359004
+// const DEFAULT_CONFIG = {
+//     merchantNo: 865001,
+//     out_storeNo: 888,
+//     signKey: 'FURFCzRZNnk7H5C9fBR2Rg=='
+// };
 
-let orderNo = "d306b130acc711e7bf9fada355409249" || uuid.v1().replace(/-/ig, '');
+let orderNo = "1507715613681" || uuid.v1().replace(/-/ig, '');
 let payType = 'H5_WXJSAPI';
-let merchantName = 'nudle';
+let merchantName = 'KemaiTech';
+let orderInfo = "AgentPlatform";
 let total_amount = 1;
-let redirectUrl = 'http://kmbk.xiaozhuzhu.top/yunposvol/';
-let notifyUrl = 'http://kmbk.xiaozhuzhu.top/yunpos/test.form';
+let redirectUrl = 'http://kmbk.xiaozhuzhu.top/agent/#/notifyBuy';
+let notifyUrl = 'http://kmbk.xiaozhuzhu.top/yunpos/agent/pay/xddPayRedirectUrl.form';
 
 // 获取支付的跳转链接
 hello = xddPayUtil.gotoH5Pay(orderNo, payType, merchantName, total_amount
     , redirectUrl, notifyUrl, DEFAULT_CONFIG.merchantNo, DEFAULT_CONFIG.out_storeNo
-    , DEFAULT_CONFIG.signKey);
+    , DEFAULT_CONFIG.signKey, 0, orderInfo);
 console.log(hello);
 
 // 支付异步回调验签
